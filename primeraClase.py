@@ -4,4 +4,4 @@ class Estudiante:
         self.nombre = nombre
         self.telefono = telefono
 
-estudiante1 = Estudiante(1036252584, "Sara", 3147249070
+estudiante1 = Estudiante(1036252584, "Sara", 3147249070)
