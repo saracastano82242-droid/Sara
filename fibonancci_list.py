@@ -79,17 +79,3 @@ def fibonacci_lista_optimizada(n):
 # Ejemplo de uso
 print(fibonacci_lista_optimizada(5)) # Imprime el 5to número de Fibonacci
 print(fibonacci_lista_optimizada(10)) # Imprime el 10mo número de Fibonacci
-
-#ejemplo de clase de algoritmo de Fibonacci con lista
-def cambio(cantidad, monedas):
-    """Calcula el número mínimo de monedas necesarias para dar el cambio."""
-    # Crear una lista para almacenar el número mínimo de monedas para cada cantidad
-    min_monedas = [float('inf')] * (cantidad + 1)
-    min_monedas[0] = 0 # Base case: 0 monedas para cantidad 0
-    
-    for i in range(1, cantidad + 1):
-        for moneda in monedas:
-            if moneda <= i:
-                min_monedas[i] = min(min_monedas[i], min_monedas[i - moneda] + 1)
-    
-    return min_monedas[cantidad] if min_monedas[cantidad] != float('inf') else -1
