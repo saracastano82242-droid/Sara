@@ -8,9 +8,9 @@ def cambio(cantidad, monedas):
     min_monedas = float('inf') # Inicializa el número mínimo de monedas como infinito
 
     for moneda in monedas: # Itera sobre cada tipo de moneda disponibles
-        num_monedas = cambio(cantidad - moneda, monedas) # Llamada recursiva para calcular el número de monedas necesarias para la cantidad restante después de usar una moneda
-        if num_monedas != float('inf'): # Si el número de monedas no es infinito, actualiza el número mínimo de monedas
-            min_monedas = min(min_monedas, num_monedas + 1) # Compara el número mínimo de monedas actual con el número de monedas calculado en la llamada recursiva más una moneda adicional (la moneda que se acaba de usar)
+        resultado = cambio(cantidad - moneda, monedas) # Llamada recursiva para calcular el número de monedas necesarias para la cantidad restante después de usar una moneda
+        if resultado != float('inf'): # Si el número de monedas no es infinito, actualiza el número mínimo de monedas
+            min_monedas = min(min_monedas, resultado + 1) # Compara el número mínimo de monedas actual con el número de monedas calculado en la llamada recursiva más una moneda adicional (la moneda que se acaba de usar)
     return min_monedas # Retorna el número mínimo de monedas necesarias para dar el cambio de la cantidad dada con las monedas disponibles
 # Ejemplo de uso
 monedas = [1, 78, 20, 25] # Lista de monedas disponibles para dar el cambio
