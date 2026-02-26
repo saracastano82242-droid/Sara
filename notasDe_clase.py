@@ -21,6 +21,8 @@
 #enqueue: agregar un elemento al final de una cola
 #dequeue: eliminar y retornar el primer elemento de una cola
 #push: agregar un elemento al tope de una pila
+#rize: eliminar y retornar el elemento en el tope de una pila
+#lambda: función anónima, es decir, una función sin nombre que se define en una sola línea utilizando la palabra clave "lambda" (ejemplo: lambda x: x + 1)
 
 
 #implementacion de una pila utilizando una lista
@@ -58,3 +60,4 @@ print(pila.pop())  # Imprime 3
 print(pila.peek()) # Imprime 2
 print(pila.size()) # Imprime 2
 print(pila.is_empty()) # Imprime False
+
