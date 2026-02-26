@@ -24,8 +24,8 @@
 #rize: eliminar y retornar el elemento en el tope de una pila
 #lambda: función anónima, es decir, una función sin nombre que se define en una sola línea utilizando la palabra clave "lambda" (ejemplo: lambda x: x + 1)
 
-
 #implementacion de una pila utilizando una lista
+"""
 class Pila:
     def __init__(self):
         self.elementos = []
@@ -61,3 +61,10 @@ print(pila.peek()) # Imprime 2
 print(pila.size()) # Imprime 2
 print(pila.is_empty()) # Imprime False
 
+
+"""
+
+#solid: Responsabilidad única, open/close, sustitución de Liskov, segregación de interfaz, inversión de dependencia
+
+#TAREA: investigar: algoritmo Shunting Yard, algoritmo ( Dijkstra, 1967) para convertir expresiones infijas a postfijas y evaluar expresiones postfijas utilizando una pila.
+#teniendo encuenta que estos tienen parentesis, operadores de suma, resta, multiplicacion y division, y numeros enteros. EXPLICAR EL ALGORITMO Y MOSTRAR UN EJEMPLO DE CÓDIGOS EN PYTHON PARA CONVERTIR UNA EXPRESIÓN INFIX A POSTFIX Y EVALUARLA.
