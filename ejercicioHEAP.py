@@ -10,7 +10,7 @@ class Paciente:
         self.prioridad = prioridad
         self.orden_llegada = orden_llegada
 
-    def __lt__(self, other):
+    def __lt__(self, other): #este metodo lo utilizo para comparar dos objetos de la clase Paciente y determinar cuál tiene mayor prioridad.
         if self.prioridad == other.prioridad:
             return self.orden_llegada < other.orden_llegada
         return self.prioridad < other.prioridad
@@ -20,18 +20,20 @@ class Clinica:
         self.orden_llegada = 0
 
     def agregar_paciente(self, nombre, prioridad):
-        paciente = Paciente(nombre, prioridad, self.orden_llegada)
+        paciente = (prioridad, self.orden_llegada, nombre)
         heapq.heappush(self.pacientes, paciente)
         self.orden_llegada += 1
-        print(f"Paciente '{nombre}' agregado con prioridad {prioridad}.")
+        print(f"Paciente '{nombre}' agregado con prioridad {prioridad}.\n")
 
     def mostrar_pacientes(self):
         if not self.pacientes:
-            print("No hay pacientes en la clínica.")
+            print("No hay pacientes en la clínica.\n")
             return
-        print("Pacientes en la clínica:")
+        print("⁛"*35)
+        print("Pacientes en la clínica")
+        print("⁛"*35)
         for paciente in self.pacientes:
-            print(f"Nombre: {paciente.nombre}, Prioridad: {paciente.prioridad}, Orden de llegada: {paciente.orden_llegada}")
+            print(f"Nombre: {paciente[2]}, Prioridad: {paciente[0]}, Orden de llegada: {paciente[1]} \n")
     
 
     def atender_paciente(self):
@@ -39,16 +41,19 @@ class Clinica:
             print("No hay pacientes para atender.")
             return
         paciente_atendido = heapq.heappop(self.pacientes)
-        print(f"Atendiendo al paciente: '{paciente_atendido.nombre}' con una prioridad de: {paciente_atendido.prioridad} ' su orden de llegada: {paciente_atendido.orden_llegada}.")
+        print(f"Atendiendo al paciente: '{paciente_atendido[2]}' con una prioridad de: {paciente_atendido[0]} ' su orden de llegada: {paciente_atendido[1]}.\n")
 # Ejemplo de uso
 clinica = Clinica()
-clinica.agregar_paciente("Juan", 2)
-clinica.agregar_paciente("Maria", 1)
-clinica.agregar_paciente("Pedro", 3)
+clinica.agregar_paciente("Sara", 2)
+clinica.agregar_paciente("Pablo", 1)
+clinica.agregar_paciente("Daniel", 3)
+clinica.agregar_paciente("Lisbet", 1)
 clinica.mostrar_pacientes()
-clinica.orden_llegada = 1  # Reiniciar el orden de llegada para la demostración
-clinica.atender_paciente()  # Atenderá a Maria (prioridad 1)
-clinica.atender_paciente()  # Atenderá a Juan (prioridad 2
-clinica.atender_paciente()  # Atenderá a Pedro (prioridad 3)
-clinica.atender_paciente()  # No hay pacientes para atender
 
+clinica.atender_paciente()  
+clinica.atender_paciente()  
+clinica.atender_paciente()  
+clinica.atender_paciente()  
+clinica.orden_llegada = 0 
+
+print(clinica.pacientes)

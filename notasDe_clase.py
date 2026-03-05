@@ -86,7 +86,7 @@ print(pila.is_empty()) # Imprime False
 # Un heap puede ser un max-heap (donde el elemento con la mayor prioridad es el máximo) o un min-heap (donde el elemento con la mayor prioridad es el mínimo). Los heaps se utilizan comúnmente para implementar colas de prioridad y algoritmos de ordenamiento como heapsort.
 
 #esta es la libreria para importar el heap en python
-
+"""import heapq" # La librería heapq proporciona una implementación de un heap en Python, que es una estructura de datos que permite almacenar elementos de manera eficiente, donde el elemento con la mayor prioridad se encuentra en la raíz del heap. La función heapq.heapify() se utiliza para convertir una lista en un heap, y las funciones heapq.heappush() y heapq.heappop() se utilizan para agregar y eliminar elementos del heap, respectivamente. Los heaps se utilizan comúnmente para implementar colas de prioridad y algoritmos de ordenamiento como heapsort.""
 import heapq
 def demo_operaciones_basicas():
     print("="*35)
@@ -101,7 +101,70 @@ def demo_operaciones_basicas():
     heapq.heapify(datos)
     print(f"Heap después de heapify: {datos}")
 
-#ejemplo de uso
+#ejemplo de uso 
 demo_operaciones_basicas()
 
+** NOTA: el heap lo usamos en caso de que necesitemos una estructura de datos que permita almacenar elementos de manera eficiente,
+donde el elemento con la mayor prioridad se encuentra en la raíz del heap. 
+Por ejemplo, si necesitamos implementar una cola de prioridad para gestionar tareas en un sistema operativo, podríamos utilizar un heap para almacenar las tareas y asegurarnos de que la tarea 
+con la mayor prioridad se ejecute primero. Otro ejemplo podría ser en algoritmos de ordenamiento como heapsort, donde se utiliza un heap para ordenar una lista de elementos de manera eficiente. 
 
+En resumen, el heap es útil cuando necesitamos gestionar elementos con prioridades o realizar operaciones de ordenamiento de manera eficiente.
+
+cuando tenemos una lista de tuplas y queremos ordenarla por el segundo elemento de cada tupla, podemos utilizar la función sorted() con una función lambda como clave de ordenamiento. Por ejemplo:
+lista_tuplas = [(1, 'b'), (2, 'a'), (3, 'c')]
+lista_ordenada = sorted(lista_tuplas, key=lambda x: x[1])
+print(f"Lista ordenada por segundo elemento: {lista_ordenada}")
+
+#ejemplo de uso de heapq con tuplas
+import heapq
+def demo_heapq_con_tuplas():
+    print("="*35)
+    print("Ejemplo de heapq con tuplas")
+    print("="*35)
+
+    print("\n1. Crear un heap con tuplas:")
+    print("-"*38)
+    datos = [(2, 'tarea2'), (1, 'tarea1'), (3, 'tarea3')]
+    print(f"Datos originales: {datos}")
+
+    heapq.heapify(datos)
+    print(f"Heap después de heapify: {datos}")
+#ejemplo de uso
+demo_heapq_con_tuplas()
+
+heappop: elimina y retorna el elemento con la mayor prioridad (el mínimo en un min-heap o el máximo en un max-heap) del heap. Por ejemplo:
+import heapq
+heap = [(2, 'tarea2'), (1, 'tarea1'), (3, 'tarea3')]
+heapq.heapify(heap)
+print(f"Heap antes de heappop: {heap}")
+elemento_con_prioridad = heapq.heappop(heap)
+print(f"Elemento con mayor prioridad: {elemento_con_prioridad}")
+print(f"Heap después de heappop: {heap}")
+
+
+"""
+
+#TAREA: nesecito un metodo que me indique si esta bien la exprecion que le ingrese que contenga "(,),{,},[,],45,12,3,4,5,6,7,8,9,+,-,*,/ y que me devuelta true o falce si esta bien o mal, lo evaluamos con pilas y colas
+#ejemplo: valida: [(3 + 4) * 2 / (1 - 5)] -> true
+#ejemplo: no valida: [(3 + 4) * 2 / (1 - 5] -> false
+def validar_expresion(expresion):
+    pila = []
+    pares_parentesis = {'(': ')', '{': '}', '[': ']'}
+    
+    for char in expresion:
+        if char in pares_parentesis:  # Si el carácter es un paréntesis de apertura
+            pila.append(char)  # Agrega el paréntesis a la pila
+        elif char in pares_parentesis.values():  # Si el carácter es un paréntesis de cierre
+            if not pila:  # Si la pila está vacía, no hay un paréntesis de apertura correspondiente
+                return False
+            ultimo_parentesis = pila.pop()  # Elimina el último paréntesis de apertura de la pila
+            if pares_parentesis[ultimo_parentesis] != char:  # Verifica si el paréntesis de cierre corresponde al último paréntesis de apertura
+                return False
+    
+    return len(pila) == 0  # Si la pila está vacía al final, la expresión es válida; de lo contrario, no lo es
+# Ejemplo de uso
+expresion_valida = "[(3 + 4) * 2 / (1 - 5)]"
+expresion_no_valida = "[(3 + 4) * 2 / (1 - 5]"
+print(f"Expresión: {expresion_valida} -> Válida: {validar_expresion(expresion_valida)}")
+print(f"Expresión: {expresion_no_valida} -> Válida: {validar_expresion(expresion_no_valida)}")
