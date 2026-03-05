@@ -81,3 +81,27 @@ print(pila.is_empty()) # Imprime False
 
 #para yo encontrar un elemento en una lista tengo que recorrer toda la lista, lo que tiene una complejidad de O(n), donde n es el número de elementos en la lista. Si el elemento se encuentra al final de la lista, tendré que recorrer toda la lista para encontrarlo. Si el elemento no se encuentra en la lista, también tendré que recorrer toda la lista para verificar que no está presente. Por lo tanto, la complejidad de buscar un elemento en una lista es O(n).
 #para yo encontar un elemento en una pila tengo que recorrer toda la pila, lo que tiene una complejidad de O(n), donde n es el número de elementos en la pila. Si el elemento se encuentra al final de la pila, tendré que recorrer toda la pila para encontrarlo. Si el elemento no se encuentra en la pila, también tendré que recorrer toda la pila para verificar que no está presente. Por lo tanto, la complejidad de buscar un elemento en una pila es O(n).
+
+#heap: estructura de datos que permite almacenar elementos de manera eficiente, donde el elemento con la mayor prioridad se encuentra en la raíz del heap. 
+# Un heap puede ser un max-heap (donde el elemento con la mayor prioridad es el máximo) o un min-heap (donde el elemento con la mayor prioridad es el mínimo). Los heaps se utilizan comúnmente para implementar colas de prioridad y algoritmos de ordenamiento como heapsort.
+
+#esta es la libreria para importar el heap en python
+
+import heapq
+def demo_operaciones_basicas():
+    print("="*35)
+    print("Operaciones básicas con heapq")
+    print("="*35)
+
+    print("\n1. crear un heap(heapify):")
+    print("-"*38)
+    datos = [5, 3, 8, 1, 2]
+    print(f"Datos originales: {datos}")
+
+    heapq.heapify(datos)
+    print(f"Heap después de heapify: {datos}")
+
+#ejemplo de uso
+demo_operaciones_basicas()
+
+
