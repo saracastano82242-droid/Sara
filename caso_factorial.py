@@ -9,3 +9,19 @@ def caso_factorial(n,):
 
     
 print(caso_factorial(8))
+
+#otro ejemplo de factorial
+def factorial(n):
+#Calcula n! de forma recursiva."""
+# Caso base
+    if n <= 1:
+        return 1
+# Caso recursivo
+    return n * factorial(n - 1)
+# Ejemplo de ejecución:
+# factorial(4)
+# = 4 * factorial(3)
+# = 4 * (3 * factorial(2))
+# = 4 * (3 * (2 * factorial(1)))
+# = 4 * (3 * (2 * 1))
+# = 4 * (3 * 2) = 4 * 6 = 24
