@@ -1,19 +1,19 @@
 def validar_expresion(expresion):
-    pila = []
-    pares_parentesis = {'(': ')', '{': '}', '[': ']'}
+    pila = [] # Pila para almacenar los paréntesis de apertura
+    simbolos = {'(': ')', '{': '}', '[': ']'}
 
     for char in expresion:
 
-        if char in pares_parentesis:  # Paréntesis de apertura
+        if char in simbolos:  # Paréntesis de apertura
             pila.append(char)
 
-        elif char in pares_parentesis.values():  # Paréntesis de cierre
+        elif char in simbolos.values():  # Paréntesis de cierre
             if not pila:
                 return False
 
-            ultimo_parentesis = pila.pop()
+            ultimo_simbolo = pila.pop()
 
-            if pares_parentesis[ultimo_parentesis] != char:
+            if simbolos[ultimo_simbolo] != char:
                 return False
 
     return len(pila) == 0
