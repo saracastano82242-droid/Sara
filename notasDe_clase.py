@@ -148,6 +148,8 @@ print(f"Heap después de heappop: {heap}")
 #TAREA: nesecito un metodo que me indique si esta bien la exprecion que le ingrese que contenga "(,),{,},[,],45,12,3,4,5,6,7,8,9,+,-,*,/ y que me devuelta true o falce si esta bien o mal, lo evaluamos con pilas y colas
 #ejemplo: valida: [(3 + 4) * 2 / (1 - 5)] -> true
 #ejemplo: no valida: [(3 + 4) * 2 / (1 - 5] -> false
+"""
+
 def validar_expresion(expresion):
     pila = []
     pares_parentesis = {'(': ')', '{': '}', '[': ']'}
@@ -168,3 +170,31 @@ expresion_valida = "[(3 + 4) * 2 / (1 - 5)]"
 expresion_no_valida = "[(3 + 4) * 2 / (1 - 5]"
 print(f"Expresión: {expresion_valida} -> Válida: {validar_expresion(expresion_valida)}")
 print(f"Expresión: {expresion_no_valida} -> Válida: {validar_expresion(expresion_no_valida)}")
+"""
+
+"""
+09/03/2026
+¿que son las expreciones regulares? 
+R// Las expresiones regulares son patrones de búsqueda que se utilizan para encontrar y manipular texto. 
+Permiten realizar búsquedas complejas y reemplazos en cadenas de texto utilizando una sintaxis específica. Las expresiones regulares 
+son ampliamente utilizadas en programación para validar formatos de entrada, extraer información de texto, y realizar operaciones de búsqueda y reemplazo.
+
+cosas clave:
+* nos permine validar formatos de entrada (como correos electrónicos, números de teléfono, etc.)
+* nos permite extraer información de texto (como direcciones IP, fechas, etc.)
+* nos permite realizar operaciones de búsqueda y reemplazo en cadenas de texto.
+* extraer información de texto utilizando grupos de captura, lo que nos permite obtener partes específicas 
+de una cadena que coinciden con el patrón de búsqueda.
+* las expresiones regulares son una herramienta poderosa para trabajar con texto y son ampliamente 
+utilizadas en muchos lenguajes de programación, incluyendo Python, JavaScript, Java, entre otros.
+* podemos reemplazar textos
+
+¿para que se utilizan las expresiones regulares?
+R// Las expresiones regulares se utilizan para validar formatos de entrada (como correos electrónicos,
+números de teléfono, etc.), extraer información de texto (como direcciones IP, fechas, etc.),
+y realizar operaciones de búsqueda y reemplazo en cadenas de texto.
+
+
+TAREA: explicar una exprecion regular que valide bien un correo electronico (hacer el codigo)
+
+"""
