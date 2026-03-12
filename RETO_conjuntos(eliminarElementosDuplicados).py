@@ -4,3 +4,8 @@ lista = [5,5,5,5,2,4,5,3,6,7,2,1,5,3,9,0,1,0,2,5,7,8]
 
 conjunto = set(lista)
 print(conjunto)
+
+"""
+si quiero el caso en una lista
+conjunto = list(set(lista))
+"""
