@@ -194,7 +194,50 @@ R// Las expresiones regulares se utilizan para validar formatos de entrada (como
 números de teléfono, etc.), extraer información de texto (como direcciones IP, fechas, etc.),
 y realizar operaciones de búsqueda y reemplazo en cadenas de texto.
 
+lista: [1,2,3,4,5]
+tupla: (1,2,3)
+
 
 TAREA: explicar una exprecion regular que valide bien un correo electronico (hacer el codigo)
+
+"""
+
+"""
+                            CONJUNTOS
+Notacion: A = {1,2,3,4,5}
+Cardinalidad: |A| = 5
+
+pertenencia python: 2 in A -> True o false, preguntara si el elementi esta en el conjunto, el rendimiento cambia mucho ya sea en conjuntos o listas
+
+union: A|B o A.union(B)
+intersepcion: A & B o A.intercepcion(B)
+diferencias: 
+elementos A que NO estan en B
+
+* A = {1.2.3}
+* B = {3,4,5}
+* A - B = {1,2}
+* B - A = {4,5}
+
+NOTA: A - B != B - A
+
+Diferencia simetrica (A "triangulo")
+elementos que A o B, pero NO en ambos
+
+A = {1,2,3}
+B = {3,4,5}
+A triangulo B = {1,2,4,5}
+
+Subconjuntos
+todos los elementos pertenecen a A y estan en B
+
+igualdal (A = B)
+
+A c B y A != B
+
+conjuntos disjuntos
+A n B = !0
+
+RETO: tengo una lista de n elementos y quiero eliminar todos los duplicados
 
 """

@@ -31,9 +31,11 @@ def validar_contraseña(contraseña):
     # [a-zA-Z0-9*_\-.] : Permite letras, números y los caracteres *, _, -, .
     # + : Asegura que al menos haya un caracter y no esté vacía.
     
-    patron = r"^[a-zA-Z0-9*_\-.]+$"
+    patron = r"^[a-zA-Z0-9*_\-.]+$" #Dice que la contraseña solo puede tener letras (A-Z), 
+    #números (0-9) y los símbolos *, _, -, .. Los símbolos ^ y $ obligan a que toda la palabra cumpla la regla de principio a fin.
     
-    contraseña_valida = re.match(patron, contraseña)
+    contraseña_valida = re.match(patron, contraseña) #Compara tu contraseña con las reglas anteriores. 
+    #Si encuentra algo prohibido (como un espacio o un @), devuelve un "vacío" (None).
     return bool(contraseña_valida)
 
 # Pruebas
