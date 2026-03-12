@@ -73,4 +73,8 @@ Por ejemplo, \d{3,} coincide con tres o más dígitos consecutivos
 "\w+": ignorara los puntos
 "^\w+@\w+\.\w": significa que vamos a evaluar el texto y que deben numeros o letras, una y debe haber un @, y despues deben aver uno o mas letras 
 y numeros y depues del punto letras o numeros
+
+12/03/2026
+
+[-\s]: este verifica los espacios 
 """
