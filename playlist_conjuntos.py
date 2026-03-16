@@ -11,8 +11,10 @@ canciones_Maria = {
 playlist_comun = canciones_Juan.intersection(canciones_Maria) #Intersección de los conjuntos
 catalogo = canciones_Juan | canciones_Maria #Unión de los conjuntos
 recomendaciones = canciones_Juan - canciones_Maria #Diferencia de los conjuntos
-a = {canciones_Juan, canciones_Maria} #Conjunto de conjuntos
+a = (canciones_Juan, canciones_Maria) #Conjunto de conjuntos
 exclusivas = canciones_Juan ^ canciones_Maria #Diferencia simétrica de los conjuntos
+
+#otro ejemplo
 
 algoritmos = {
     "Ana", "Carlos", "Diana", "Eduardo", "Fernanda",
@@ -40,4 +42,8 @@ solo_redes = redes - algoritmos - bases_de_datos
 solo_una = solo_algoritmos | solo_bases | solo_redes
 print(len(solo_una))
 #resumen de en que materias estan cada estudiante
+#resumen = {est: [m for m, c in [("Algoritmos", algoritmos),("Bases de Datos", bases_de_datos), ("Redes", redes)] if est in c] for est in (algoritmos | bases_de_datos | redes)}
 
+reporte = {}
+
+todos = algoritmos | redes | bases_de_datos
