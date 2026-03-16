@@ -22,7 +22,7 @@ print("1. Crear conjuntos")
 print("=" * 60)
 
 # Con llaves {}
-frutas = {"manzana", "naranja", "pera"}
+frutas = {"manzana", "naranja", "pera"} 
 print(f"Frutas: {frutas}")
 
 # Con set() a partir de una lista
