@@ -47,3 +47,61 @@ print(len(solo_una))
 reporte = {}
 
 todos = algoritmos | redes | bases_de_datos
+
+for estudiante in sorted(todos):
+    materias = []
+
+    if estudiante in algoritmos:
+        materias.append("Algoritmos")
+    if estudiante in redes:
+        materias.append("Redes")
+    if estudiante in bases_de_datos:
+        materias.append("Bases de datos")
+    
+    reporte[estudiante] = materias
+
+
+print(reporte)
+
+#otro ejercicio
+
+catalogo = {
+    "juasik park": {"ciencia ficcion", "accion", "comedia"},
+    "rey leon": {"animacion", "comedia", "infantil"},
+    "los feos": {"ciencia ficcion", "accion", "drama"},
+    "star wars": {"romance", "accion", "drama", "aventura"},
+}
+
+"""
+genero_buscado = "ciencia ficcion"
+
+print(f"Películas similares de {genero_buscado}:")
+
+# Usamos .items() para obtener el nombre y los géneros al mismo tiempo
+for nombre, generos in catalogo.items():
+    if genero_buscado in generos:
+        print("- " + nombre)
+"""
+
+#resuelto por wl profesor
+peliculas = list(catalogo.keys())
+
+peliculas_comunes = []
+for i in range(len(peliculas) - 1): # Agregamos el -1
+    p1, p2 = peliculas[i], peliculas[i+1]
+    comunes = catalogo[p1] & catalogo[p2]
+    if len(comunes) >= 2:
+        peliculas_comunes.append ((p1, p2,comunes))
+
+print(peliculas_comunes)
+
+favoritos_mios = {"romance", "drama", "ciencia ficcion", "aventura"}
+
+for pelicula, generos in catalogo.items():
+    coincidencia = generos & favoritos_mios
+
+    if coincidencia:
+        porcentaje = ((len(coincidencia)/len(favoritos_mios)) * 100, 2) 
+        recomendaciones.append((pelicula, porcentaje))
+
+print(recomendaciones)
