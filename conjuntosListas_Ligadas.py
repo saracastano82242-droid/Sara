@@ -122,3 +122,14 @@ class Conjuntos:
             resultado.append(actual.dato)
             actual = actual.siguiente
         return resultado 
+    
+    def __str__(self):
+        return "{" + ", ".join(str(x)for x in self.a_lista()) + "}"
+    
+    def __len__(self):
+        return self.tamaño
+    
+    def __contains__(self, x):
+        return self. pertenece(x)
+    
+    
