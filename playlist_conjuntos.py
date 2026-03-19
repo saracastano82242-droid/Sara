@@ -104,4 +104,4 @@ for pelicula, generos in catalogo.items():
         porcentaje = ((len(coincidencia)/len(favoritos_mios)) * 100, 2) 
         recomendaciones.append((pelicula, porcentaje))
 
-print(recomendaciones)
+print(recomendaciones) 
