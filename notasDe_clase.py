@@ -241,3 +241,27 @@ A n B = !0
 RETO: tengo una lista de n elementos y quiero eliminar todos los duplicados
 
 """
+
+"""
+19/03/26
+
+  #return acciones_requeridoas <= permisos (subconjunto)
+  
+
+  OPERADOTES DE CONJUNTOS
+- Unión (|): elementos en A o en B (o en ambos) (A|B)
+- Intersección (&): elementos en A y en B (A&B)
+- Diferencia (-): elementos en A que no están en B (A-B)
+- Diferencia simétrica (△): elementos en A o B, pero no en ambos (A^B)
+- Subconjunto (<=): A es un subconjunto de B si todos los elementos de A están en B (A <= B)
+- Superconjunto (>=): A es un superconjunto de B si todos los elementos de B están en A (A >= B)
+- Igualdad (==): A es igual a B si ambos conjuntos tienen los mismos elementos (A == B)
+- No disjuntos: A y B no son disjuntos si tienen al menos un elemento en común (A n B != ∅)
+
+DICCIONARIOS
+- Un diccionario es una estructura de datos que almacena pares de clave-valor, donde cada clave es única y se utiliza para acceder a su valor 
+correspondiente. En Python, los diccionarios se definen utilizando llaves {} y los pares de clave-valor se separan por dos
+puntos (:). Por ejemplo: mi_diccionario = {"clave1": "valor1", "clave2": "valor2", "clave3": "valor3"}.
+
+
+"""
