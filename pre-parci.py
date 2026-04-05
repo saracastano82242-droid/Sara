@@ -443,3 +443,165 @@ sistema.eliminar_riesgo_bajo()
 print("Sistema procesado (sin riesgo bajo).")
 ═══════════════════════════════════════════════════════════════════════════════
 """
+
+"""
+═══════════════════════════════════════════════════════════════════════════════
+                    EXAMEN PARCIAL - ALGORITMOS Y PROGRAMACIÓN
+                                  TIPO: A
+                    Sistema de Tráfico de Red "Net-Manager"
+═══════════════════════════════════════════════════════════════════════════════
+
+CONTEXTO:
+---------
+La empresa "Net-Manager" necesita gestionar paquetes de datos que circulan por
+un router. Debes implementar el sistema usando Listas Enlazadas.
+Cada paquete tiene un ID, un código de protocolo y una importancia (1-10).
+
+INSTRUCCIONES:
+--------------
+1. Diseñar la clase Nodo (Paquete) y la clase Lista (FlujoDatos).
+2. Usar RECURSIVIDAD en los métodos indicados.
+3. Usar EXPRESIONES REGULARES para validar códigos de protocolo.
+4. No usar listas de Python [] para almacenar los nodos principales.
+5. Tiempo: 120 minutos.
+
+═══════════════════════════════════════════════════════════════════════════════
+REQUERIMIENTOS DEL SISTEMA
+═══════════════════════════════════════════════════════════════════════════════
+
+PUNTO 1 (1.0): DISEÑO Y VALIDACIÓN (REGEX)
+------------------------------------------
+a) Clase NODO (Paquete): ID, protocolo, importancia (1-10), procesado (bool).
+b) Clase LISTA (FlujoDatos): Debe mantener el inicio (cabeza).
+c) VALIDACIÓN: El protocolo debe cumplir el formato: 
+   "NET-" seguido de 2 letras mayúsculas y un número (Ej: NET-AF5).
+
+
+PUNTO 2 (1.0): AGREGAR PAQUETE - RECURSIVO
+------------------------------------------
+Insertar paquetes de forma ORDENADA por importancia (Mayor primero).
+- OBLIGATORIO: Usar recursividad para la inserción.
+
+
+PUNTO 3 (1.0): ANÁLISIS DE PROTOCOLOS - CONJUNTOS
+-------------------------------------------------
+Implementa un método que recorra la lista y devuelva un SET con los 
+nombres de los protocolos únicos que han sido procesados.
+
+
+PUNTO 4 (1.0): OPTIMIZACIÓN - RECURSIVIDAD CON MEMORIZACIÓN
+-----------------------------------------------------------
+El sistema debe calcular un "Valor de Carga" basado en el ID del paquete.
+El valor de carga de un ID 'n' se calcula con la serie: f(n) = f(n-1) + f(n-2).
+- OBLIGATORIO: Implementar con MEMORIZACIÓN (diccionario) para evitar
+  recálculos innecesarios y mejorar el rendimiento.
+
+
+PUNTO 5 (1.0): FILTRAR FALLIDOS - RECURSIVO
+-------------------------------------------
+Eliminar de la lista todos los paquetes que NO hayan sido procesados.
+- OBLIGATORIO: Usar recursividad para modificar la lista original.
+
+═══════════════════════════════════════════════════════════════════════════════
+ESCRIBE TU CÓDIGO AQUÍ ABAJO
+
+import re
+
+# PUNTO 1: Estructuras
+class Paquete:
+    def __init__(self, id_pkg, protocolo, importancia, procesado=False):
+        self.id_pkg = id_pkg
+        self.protocolo = protocolo
+        self.importancia = importancia
+        self.procesado = procesado
+        self.siguiente = None
+
+class FlujoDatos:
+    def __init__(self):
+        self.cabeza = None
+        # Diccionario para memorización (Punto 4)
+        self.memo = {}
+
+    # PUNTO 1.c: Regex
+    def validar_protocolo(self, protocolo):
+        patron = r"^NET-[A-Z]{2}\d$"
+        return bool(re.match(patron, protocolo))
+
+    # PUNTO 2: Agregar Ordenado (Recursivo)
+    def agregar(self, id_pkg, protocolo, importancia, procesado=False):
+        if not self.validar_protocolo(protocolo):
+            print(f"Error: Protocolo {protocolo} no cumple el formato.")
+            return
+
+        nuevo = Paquete(id_pkg, protocolo, importancia, procesado)
+        
+        if self.cabeza is None or importancia > self.cabeza.importancia:
+            nuevo.siguiente = self.cabeza
+            self.cabeza = nuevo
+        else:
+            self._agregar_rec(self.cabeza, nuevo)
+
+    def _agregar_rec(self, actual, nuevo):
+        if actual.siguiente is None or nuevo.importancia > actual.siguiente.importancia:
+            nuevo.siguiente = actual.siguiente
+            actual.siguiente = nuevo
+        else:
+            self._agregar_rec(actual.siguiente, nuevo)
+
+    # PUNTO 3: Conjuntos (Sets)
+    def protocolos_procesados(self):
+        unicos = set()
+        actual = self.cabeza
+        while actual:
+            if actual.procesado:
+                unicos.add(actual.protocolo)
+            actual = actual.siguiente
+        return unicos
+
+    # PUNTO 4: Recursividad con Memorización (Fibonacci de Carga)
+    def calcular_carga_id(self, n):
+        # Caso base
+        if n <= 1:
+            return n
+        # Verificar si ya está en memoria (Optimización)
+        if n in self.memo:
+            return self.memo[n]
+        
+        # Calcular y guardar en memoria
+        self.memo[n] = self.calcular_carga_id(n-1) + self.calcular_carga_id(n-2)
+        return self.memo[n]
+
+    # PUNTO 5: Filtrar Fallidos (Eliminar Recursivo)
+    def eliminar_no_procesados(self):
+        self.cabeza = self._eliminar_rec(self.cabeza)
+
+    def _eliminar_rec(self, nodo):
+        if nodo is None:
+            return None
+        
+        # Primero vamos hasta el final
+        nodo.siguiente = self._eliminar_rec(nodo.siguiente)
+        
+        # Al regresar, decidimos si el nodo actual se queda
+        if not nodo.procesado:
+            return nodo.siguiente # Lo eliminamos saltándolo
+        return nodo
+
+# --- PRUEBAS DE FUNCIONAMIENTO ---
+mi_red = FlujoDatos()
+
+# Agregando con validación Regex y orden por importancia
+mi_red.agregar(10, "NET-AF5", 8, True)
+mi_red.agregar(5, "NET-XY2", 10, True)
+mi_red.agregar(2, "NET-BK9", 3, False) # Será eliminado
+
+print(f"Protocolos únicos procesados: {mi_red.protocolos_procesados()}")
+
+# Prueba de memorización (Carga para ID 10)
+# Esto es mucho más rápido que la recursividad simple
+print(f"Valor de carga para ID 10: {mi_red.calcular_carga_id(10)}")
+
+mi_red.eliminar_no_procesados()
+print("Limpieza de paquetes fallidos completada.")
+═══════════════════════════════════════════════════════════════════════════════
+"""
