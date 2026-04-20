@@ -211,7 +211,7 @@ print(extraer_hashtags("Hola #python es #genial y #100dias"))  # ['#python', '#g
 print("\nPunto 3:")
 lista_pedidos = ListaPedidos()
 lista_pedidos.agregar("Juan", "Calle 123", 25000)
-lista_pedidos.agregar("María", "Avenida 456", 30000)
+lista_pedidos.agregar("María", "Avenida 456", 30000) 
 lista_pedidos.agregar("Luis", "Carrera 789", 15000)
 print("Pedidos:")
 
