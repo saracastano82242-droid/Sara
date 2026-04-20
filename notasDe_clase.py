@@ -322,7 +322,7 @@ print(f"Expresión: {expresion_no_valida} -> Válida: {analizar_expresion(expres
 
 mas ejemplos de análisis sintáctico con pilas se pueden encontrar en la implementación de algoritmos como el algoritmo Shunting Yard de Dijkstra, que se utiliza para convertir expresiones infijas a postfijas y evaluar expresiones postfijas utilizando una pila. Este algoritmo utiliza una pila para manejar los operadores y paréntesis mientras procesa la expresión, asegurando que la sintaxis sea correcta y que los operadores se apliquen en el orden correcto.
 
-def contar (n):
+def contar (n): 
     contador = 0
     for i in range(n):
         contador += 1
@@ -342,5 +342,53 @@ f(n) = 1+1+2n
 
     2n + 2 = n + 2 // se elimina el 2 porque es una constante 
     0(n)= y se elimina el 2 porque es una constante, quedando O(n)
-    
+
+    notacion Big-O simplificada y generalizada
+    0(5n + 10) = 0(n)
+    0(n + 10) = 0(n)
+    10
 """
+
+def contador_operaciones(n):
+    contador = 0
+    for i in range(n):
+        contador += 1
+        print(i)
+    return contador
+
+#ejercicio del profesor
+
+def contador_mayoritario(arr): #complejidad cuadratica
+    mayor = 0
+    valor = 0
+    for i in range(len(arr)):
+        contador = 0 
+        for j in range (len(arr)):
+            if arr[j] == arr[i]:
+                contador += 1
+        if contador > valor:
+            valor = contador
+            mayor = i
+    return mayor, valor
+
+#forma de realizarlo menos complejo
+
+def contador_mayoritario(arr): #complejidad lineal
+    contador = {}
+    mayor = 0
+    valor = 0
+    for i in range(len(arr)): #recorre la lista una sola vez, lo que tiene una complejidad de O(n), donde n es el número de elementos en la lista.
+        if arr[i] in contador: # verifica si el elemento actual ya está en el diccionario contador. Si es así, incrementa su conteo en 1.
+            contador[arr[i]] += 1 # Si el elemento no está en el diccionario, lo agrega con un conteo inicial de 1.
+        else:
+            contador[arr[i]] = 1 # Después de actualizar el conteo del elemento actual, verifica si su conteo es mayor que el valor
+            #máximo registrado hasta ahora. Si es así, actualiza el valor máximo y el elemento mayoritario.
+        
+        if contador[arr[i]] > valor: # Verifica si el conteo del elemento actual es mayor que el valor máximo registrado hasta ahora. 
+            #Si es así, actualiza el valor máximo y el elemento mayoritario.
+            valor = contador[arr[i]]
+            mayor = arr[i]
+    return mayor, valor
+
+
+
