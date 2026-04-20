@@ -265,3 +265,82 @@ puntos (:). Por ejemplo: mi_diccionario = {"clave1": "valor1", "clave2": "valor2
 
 
 """
+
+"""
+analisis asintactico: es el proceso de analizar la estructura gramatical de una expresión o programa para determinar si es sintácticamente correcto.
+En el contexto de expresiones matemáticas, el análisis sintáctico se utiliza para verificar si una expresión está bien formada, es decir, 
+si los paréntesis están correctamente balanceados y si los operadores y operandos están en el orden correcto. El análisis sintáctico se puede r
+ealizar utilizando pilas para verificar el balance de los paréntesis y la correcta secuencia de operadores y operandos.
+
+EJEMPLO DE ANALISIS SINTACTICO CON PILAS
+def analizar_expresion(expresion):
+    pila = []
+    pares_parentesis = {'(': ')', '{': '}', '[': ']'}
+
+    for char in expresion:
+        if char in pares_parentesis:  # Si el carácter es un paréntesis de apertura
+            pila.append(char)  # Agrega el paréntesis a la pila
+        elif char in pares_parentesis.values():  # Si el carácter es un paréntesis de cierre
+            if not pila:  # Si la pila está vacía, no hay un paréntesis de apertura correspondiente
+                return False
+            ultimo_parentesis = pila.pop()  # Elimina el último paréntesis de apertura de la pila
+            if pares_parentesis[ultimo_parentesis] != char:  # Verifica si el paréntesis de cierre corresponde al último paréntesis de apertura
+                return False    
+
+    return len(pila) == 0  # Si la pila está vacía al final, la expresión es válida; de lo contrario, no lo es
+# Ejemplo de uso
+expresion_valida = "[(3 + 4) * 2 / (1 - 5)]"
+expresion_no_valida = "[(3 + 4) *   
+2 / (1 - 5]"
+print(f"Expresión: {expresion_valida} -> Válida: {analizar_expresion(expresion_valida)}")
+print(f"Expresión: {expresion_no_valida} -> Válida: {analizar_expresion(expresion_no_valida)}") 
+
+OTRO EJEMPLO DE ANALISIS SINTACTICO CON PILAS
+def analizar_expresion(expresion):
+    pila = []
+    operadores = set(['+', '-', '*', '/'])
+    pares_parentesis = {'(': ')', '{': '}', '[': ']'}
+    for char in expresion:
+        if char in pares_parentesis:  # Si el carácter es un paréntesis de apertura
+            pila.append(char)  # Agrega el paréntesis a la pila
+        elif char in pares_parentesis.values():  # Si el carácter es un paréntesis de cierre
+            if not pila:  # Si la pila está vacía, no hay un paréntesis de apertura correspondiente
+                return False
+            ultimo_parentesis = pila.pop()  # Elimina el último paréntesis de apertura de la pila
+            if pares_parentesis[ultimo_parentesis] != char:  # Verifica si el paréntesis de cierre corresponde al último paréntesis de apertura
+                return False    
+        elif char in operadores:  # Si el carácter es un operador
+            if not pila or pila[-1] in operadores:  # Verifica si el operador está en una posición válida (no puede estar al inicio o después de otro operador)
+                return False
+
+    return len(pila) == 0  # Si la pila está vacía al final, la expresión es válida; de lo contrario, no lo es
+# Ejemplo de uso
+expresion_valida = "[(3 + 4) * 2 / (1 - 5)]"
+expresion_no_valida = "[(3 + 4) *   2 / (1 - 5]"
+print(f"Expresión: {expresion_valida} -> Válida: {analizar_expresion(expresion_valida)}")
+print(f"Expresión: {expresion_no_valida} -> Válida: {analizar_expresion(expresion_no_valida)}")
+
+mas ejemplos de análisis sintáctico con pilas se pueden encontrar en la implementación de algoritmos como el algoritmo Shunting Yard de Dijkstra, que se utiliza para convertir expresiones infijas a postfijas y evaluar expresiones postfijas utilizando una pila. Este algoritmo utiliza una pila para manejar los operadores y paréntesis mientras procesa la expresión, asegurando que la sintaxis sea correcta y que los operadores se apliquen en el orden correcto.
+
+def contar (n):
+    contador = 0
+    for i in range(n):
+        contador += 1
+        print(i)
+
+    return contador
+
+    
+"2n" = el dos simbolisa el numero de lineas (es una constante) y la n sera cuantas veces se ejecuta el ciclo, entonces la complejidad de este algoritmo es O(2n) = O(n) 
+porque se ejecuta el ciclo n veces y cada vez se realiza una operación constante (contador += 1 y print(i)). 
+Por lo tanto, la complejidad del algoritmo es lineal con respecto a n.
+
+ejemplo:
+f(n) = 1+1+2n
+     = 2n + 2 // significa que se ejecuta el ciclo n veces y cada vez se realiza una operación constante (contador += 1 y print(i))
+        = O(n)
+
+    2n + 2 = n + 2 // se elimina el 2 porque es una constante 
+    0(n)= y se elimina el 2 porque es una constante, quedando O(n)
+    
+"""
