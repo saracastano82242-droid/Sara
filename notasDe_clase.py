@@ -347,6 +347,20 @@ f(n) = 1+1+2n
     0(5n + 10) = 0(n)
     0(n + 10) = 0(n)
     10
+
+    #ejemplos de diccionarios en python
+diccionario = {
+    "clave1": "valor1",
+    "clave2": "valor2",
+    "clave3": "valor3"
+}
+
+#ejemplpos cortos 
+print(diccionario["clave1"]) # Imprime "valor1"
+print(diccionario.get("clave2")) # Imprime "valor2"
+print(diccionario.get("clave4", "Valor predeterminado")) # Imprime "Valor predeterminado" porque "clave4" no existe en el diccionario
+
+
 """
 
 def contador_operaciones(n):
@@ -390,5 +404,47 @@ def contador_mayoritario(arr): #complejidad lineal
             mayor = arr[i]
     return mayor, valor
 
+#arr: significa arreglo, osea que es el nombre de la variable. 
 
+#ejercicio hecho por el profesor
+
+def elemento_mayoritario(arr):
+
+    conteos = {}
+    for elemento in arr:
+        conteos[elemento] = conteos.get(elemento, 0) + 1 # El método get() del diccionario se utiliza para obtener el valor asociado a la clave elemento. Si la clave no existe en el diccionario, devuelve un valor predeterminado (en este caso, 0). Luego, se incrementa el conteo de ese elemento en 1.
+
+    resultado = None
+    mayor_conteo = 0
+    for elemento, conteo in conteos.items(): # El método items() del diccionario devuelve una vista de los pares clave-valor del diccionario. En este caso, se itera sobre cada elemento y su conteo correspondiente.
+        if conteo > mayor_conteo: # Se compara el conteo actual con el mayor conteo registrado hasta ahora. Si el conteo actual es mayor, se actualiza el mayor conteo y se establece el resultado como el elemento actual.
+            mayor_conteo = conteo
+            resultado = elemento
+
+    return resultado
+
+def menor_diferencia(arr):
+    n = len(arr)
+    min_diff = float('inf') # Se inicializa la variable min_diff con infinito para asegurarse de que cualquier diferencia encontrada sea menor que este valor inicial.
+
+    for i in range (n):
+        for j in range(i + 1, n): # Se itera sobre cada par de elementos en el arreglo utilizando dos bucles anidados. El segundo bucle comienza desde i + 1 para evitar comparar el mismo elemento consigo mismo y para evitar comparaciones redundantes.
+            diff = abs(arr[i] - arr[j]) # Se calcula la diferencia absoluta entre los dos elementos actuales.
+            min_diff = min(min_diff, diff) # Se actualiza min_diff con la menor diferencia encontrada hasta ahora utilizando la función min().
+
+    return min_diff
+
+"""
+TAREA: mejorar este algoritmo para que tenga una complejidad menor de log n o si hay una mas eficiente mejor, y explicar como lo hiciste.
+
+"""
+def menor_diferencia(arr):
+    arr.sort() # Se ordena el arreglo de menor a mayor utilizando el método sort(), lo que tiene una complejidad de O(n log n).
+    min_diff = float('inf') # Se inicializa la variable min_diff con infinito para asegurarse de que cualquier diferencia encontrada sea menor que este valor inicial.
+
+    for i in range(1, len(arr)): # Se itera sobre el arreglo ordenado comenzando desde el segundo elemento (índice 1) hasta el final del arreglo. Esto se hace para comparar cada elemento con su vecino inmediato.
+        diff = abs(arr[i] - arr[i - 1]) # Se calcula la diferencia absoluta entre el elemento actual y su vecino inmediato anterior.
+        min_diff = min(min_diff, diff) # Se actualiza min_diff con la menor diferencia encontrada hasta ahora utilizando la función min().
+
+    return min_diff
 
