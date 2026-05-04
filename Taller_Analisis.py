@@ -45,8 +45,8 @@ def alpha(lista):
     promedio = total / len(lista)
     return promedio
 
-# Complejidad: O(n)
-# Porque: Este algoritmo tiene una coplejidad de 0(n) porque recorre toda la lista una vez para sumar sus todos elementos, que  al tamaño de la lista es de n, por lo tanto como ya mecione que la complejidad total es O(n) osea que este algortimo es lineal.
+# Complejidad: O(?)
+# Porque: ___
 
 
 def beta(lista):
@@ -56,8 +56,8 @@ def beta(lista):
                 return True
     return False
 
-# Complejidad: O(n^2)
-# Porque: POr que este algotimo tiene una complejidad de O(n^2) porque tiene dos ciclos for anidados, cada uno recorre toda la lista, por lo tanto el tiempo de ejecución va a crecer demanera cuadráticamente con el tamaño de la lista.
+# Complejidad: O(?)
+# Porque: ___
 
 
 def gamma(n):
@@ -65,8 +65,8 @@ def gamma(n):
         return 1
     return gamma(n // 2) + 1
 
-# Complejidad: O(log n)
-# Porque: este algoritmo tiene una complejidad de O(log n) porque cada vez que se llama a la función gamma, el valor de n se reduce a la mitad (n // 2), lo que significa que el número de llamadas crece de una manera logarítmica con respecto a n.
+# Complejidad: O(?)
+# Porque: ___
 
 
 def delta(lista):
@@ -75,8 +75,8 @@ def delta(lista):
         resultado.add(x)
     return resultado
 
-# Complejidad: O(n)
-# Porque: tiene una complejidad de (n) siendo asi un algoritmo lineal, porque recorre toda la lista una vez para agregar cada elemento al resultado.
+# Complejidad: O(?)
+# Porque: ___
 
 
 def epsilon(lista):
@@ -84,9 +84,9 @@ def epsilon(lista):
         if x in lista:
             pass
 
-# Complejidad: O(n^2)
-# Porque: es una complejidad de O(n^2) porque el ciclo for recorre toda la lista siendo asi lineal.
-# PISTA: ¿cuánto cuesta `x in lista`? dentro del ciclo se hace una búsqueda lineal con `x in lista que también tiene una complejidad de O(n) haciendo que tambien crezca de manera cuadrática.
+# Complejidad: O(?)
+# Porque: ___
+# PISTA: ¿cuánto cuesta `x in lista`?
 
 
 def zeta(n):
@@ -95,8 +95,8 @@ def zeta(n):
         while j < n:
             j *= 3
 
-# Complejidad: O(log n)
-# Porque: tinene una complejidad de 0(long n) por que el while se esta ejecuntando logaritmicamente y j se multiplica 3 veces cada vez que se recorre el while.
+# Complejidad: O(?)
+# Porque: ___
 
 
 def eta(lista):
@@ -107,9 +107,9 @@ def eta(lista):
     der = eta(lista[medio:])
     return izq + der
 
-# Complejidad: O(n log n)
-# Porque: es una complejidad logaritmica por que el algoritmo se divide en dos partes, lo que significa que el número de llamadas crece de una manera logarítmica con respecto al tamaño de la lista.
-# # PISTA: ¿cuánto cuesta lista[:medio]? medio tiene una complejidad lineal (0(n)).
+# Complejidad: O(?)
+# Porque: ___
+# PISTA: ¿cuánto cuesta lista[:medio]?
 
 
 def theta(n):
@@ -118,8 +118,8 @@ def theta(n):
         i += 1
     return i
 
-# Complejidad: O(log (log n)
-# Porque: esta es una complejidad de O(log (log n)) lo que significa que i crece de manera logarítmica con respecto a n, y "i" se incrementa en cada iteración.
+# Complejidad: O(?)
+# Porque: ___
 
 
 """
@@ -129,16 +129,16 @@ Ordena las siguientes complejidades de la MÁS RÁPIDA a la MÁS LENTA:
 
 O(n!), O(1), O(n log n), O(2^n), O(n²), O(log n), O(n), O(n³), O(√n)
 
-Tu respuesta (de más rápida a más lenta): #la constante es la mas rapida
-1. O(1) 
-2. 0(log n)
-3. O(n log n)
-4. O(√n)  # La raíz cuadrada de n crece más lentamente que n, por lo tanto es más rápida que O(n) pero más lenta que O(log n).
-5. 0(n)
-6. O(n²)
-7. O(n³)
-8. O(2^n)
-9. O(n!) #complejidad lineal o tiempo lineal, indica que el tiempo de ejecución de un algoritmo o la cantidad de recursos que consume crece de manera directamente proporcional al tamaño de la entrada (n).
+Tu respuesta (de más rápida a más lenta):
+1. ___
+2. ___
+3. ___
+4. ___
+5. ___
+6. ___
+7. ___
+8. ___
+9. ___
 """
 
 
@@ -147,30 +147,30 @@ PUNTO A.3 (0.3): Verdadero o Falso
 
 Escribe V o F y justifica brevemente las falsas.
 
-1. ( V ) O(2n) es más lento que O(n)
+1. ___ O(2n) es más lento que O(n)
    Justificación: ___
 
-2. ( F ) Un algoritmo O(n²) siempre es más lento que uno O(n log n)
-   Justificación: Por que no siempre es más lento, ya que para valores pequeños de n, O(n²) puede ser más rápido que O(n log n).
-
-3. ( V ) Si un algoritmo tiene un for de n y dentro un for de 5,su complejidad es O(n²)
+2. ___ Un algoritmo O(n²) siempre es más lento que uno O(n log n)
    Justificación: ___
 
-4. ( V ) `x in set` tiene la misma complejidad que `x in list`
+3. ___ Si un algoritmo tiene un for de n y dentro un for de 5,
+       su complejidad es O(n²)
    Justificación: ___
 
-5. ( F ) Un algoritmo recursivo que se llama a sí mismo 2 veces
+4. ___ `x in set` tiene la misma complejidad que `x in list`
+   Justificación: ___
+
+5. ___ Un algoritmo recursivo que se llama a sí mismo 2 veces
        siempre es O(2^n)
-   Justificación: Por que no siempre es O(2^n), ya que la complejidad de un algoritmo ouede depender de cómo se dividen los problemas y cómo se combinan los resultados.
-
-6. ( V ) O(n) + O(n²) = O(n³)
    Justificación: ___
 
-   
-7. ( V ) La complejidad espacial de un algoritmo in-place es O(1)
+6. ___ O(n) + O(n²) = O(n³)
    Justificación: ___
 
-8. ( V ) Memoización mejora la complejidad temporal pero empeora la espacial
+7. ___ La complejidad espacial de un algoritmo in-place es O(1)
+   Justificación: ___
+
+8. ___ Memoización mejora la complejidad temporal pero empeora la espacial
    Justificación: ___
 """
 
@@ -190,14 +190,14 @@ Puedes consultar: https://wiki.python.org/moin/TimeComplexity
 ┌──────────────────────────────┬──────────────┬──────────────┐
 │ Operación                    │ Lista []     │ Set/Dict {}  │
 ├──────────────────────────────┼──────────────┼──────────────┤
-│ Acceder por índice [i]       │ O(1)         │ N/A          │
-│ Buscar elemento (x in ...)   │ O(n)         │ O(1)         │
-│ Agregar al final (.append)   │ O(1)         │ O(1)         │
-│ Insertar al inicio           │ O(n)         │ N/A          │
-│ Eliminar por valor (.remove) │ O(n)         │ O(1)         │
-│ Obtener longitud (len)       │ O(1)         │ O(1)         │
-│ Ordenar (.sort / sorted)     │ O(n log n)   │ N/A          │
-│ Copiar (.copy / [:])         │ O(n)         │ O(n)         │
+│ Acceder por índice [i]       │ O(?)         │ N/A          │
+│ Buscar elemento (x in ...)   │ O(?)         │ O(?)         │
+│ Agregar al final (.append)   │ O(?)         │ O(?)  (.add) │
+│ Insertar al inicio           │ O(?)         │ N/A          │
+│ Eliminar por valor (.remove) │ O(?)         │ O(?)         │
+│ Obtener longitud (len)       │ O(?)         │ O(?)         │
+│ Ordenar (.sort / sorted)     │ O(?)         │ N/A          │
+│ Copiar (.copy / [:])         │ O(?)         │ O(?)         │
 └──────────────────────────────┴──────────────┴──────────────┘
 """
 
@@ -208,19 +208,15 @@ PUNTO B.2 (0.25): Caso real
 Investiga y responde:
 
 1. ¿Qué algoritmo de ordenamiento usa Python internamente (sorted/list.sort)?
-   Respuesta: ___ es Timsort, una combinación de Merge Sort e Insertion Sort, optimizado para datos reales. Unas de sus diferencias de uso son: 
-   list.sort(): Modifica la lista original in situ (in-place) y devuelve None.
-    sorted(): Crea una nueva lista ordenada y deja la original intacta. 
+   Respuesta: ___
 
 2. ¿Cuál es su complejidad en el mejor, peor y caso promedio?
-   Mejor: 0(n) para cuando los datos ya estan ordenados.
-   Peor: 0(n log n) para cuando los datos estan en un orden inverso.
-   Promedio: 0(n log n) para cuando los datos están en un orden aleatorio.
-   
+   Mejor: ___
+   Peor: ___
+   Promedio: ___
 
 3. ¿Por qué Python eligió ese algoritmo y no Quick Sort?
-   Respuesta: Python eligió Timsort en lugar de Quick Sort porque Timsort es más eficiente para datos reales, especialmente cuando los datos ya están parcialmente ordenados. 
-   Mientras que Quick Sort tiene un rendimiento O(n log n) en el mejor de los casos.
+   Respuesta: ___
 """
 
 
@@ -249,8 +245,8 @@ def unicos_lento(lista):
     for x in lista:
         if x not in resultado:
             resultado.append(x)
-    return resultado 
-    
+    return resultado
+
 
 def unicos_rapido(lista):
     """
@@ -260,13 +256,7 @@ def unicos_rapido(lista):
     TODO: Implementar
     COMPLEJIDAD: O(?)
     """
-    resultado = []
-    vistos = set()
-    for x in lista:
-        if x not in vistos:
-            resultado.append(x)
-            vistos.add(x)
-    return resultado
+    pass
 
 
 # ─── PROBLEMA C.2 (0.4): Frecuencia del más común ────────────────────────────
@@ -296,11 +286,7 @@ def mas_comun_rapido(lista):
     TODO: Implementar
     COMPLEJIDAD: O(?)
     """
-    contador = {}
-    for x in lista:
-        contador[x] = contador.get(x, 0) + 1
-    max_elem = max(contador, key=contador.get)
-    return max_elem, contador[max_elem]
+    pass
 
 
 # ─── PROBLEMA C.3 (0.4): Pares que suman K ───────────────────────────────────
@@ -329,14 +315,7 @@ def pares_suma_rapido(lista, k):
     TODO: Implementar
     COMPLEJIDAD: O(?)
     """
-    vistos = set()
-    pares = []
-    for x in lista:
-        complemento = k - x
-        if complemento in vistos:
-            pares.append((complemento, x))
-        vistos.add(x)
-    return pares
+    pass
 
 
 # ─── PROBLEMA C.4 (0.4): Anagramas ───────────────────────────────────────────
@@ -360,16 +339,7 @@ def son_anagramas_rapido(palabra1, palabra2):
     TODO: Implementar
     COMPLEJIDAD: O(?)
     """
-    if len(palabra1) != len(palabra2):
-        return False
-    contador = {}
-    for letra in palabra1:
-        contador[letra] = contador.get(letra, 0) + 1
-    for letra in palabra2:
-        if letra not in contador or contador[letra] == 0:
-            return False
-        contador[letra] -= 1
-    return True
+    pass
 
 
 # ─── PROBLEMA C.5 (0.4): Subarray de suma máxima ─────────────────────────────
@@ -392,7 +362,7 @@ def max_subarray_lento(lista):
     return max_suma
 
 
-def max_subarray_rapido(lista):    
+def max_subarray_rapido(lista):
     """
     Algoritmo de Kadane: un solo recorrido.
 
@@ -403,13 +373,7 @@ def max_subarray_rapido(lista):
     TODO: Implementar
     COMPLEJIDAD: O(?)
     """
-    max_suma = float('-inf')
-    suma_actual = 0
-    for x in lista:
-        suma_actual = max(x, suma_actual + x)
-        max_suma = max(max_suma, suma_actual)
-    return max_suma
-    
+    pass
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

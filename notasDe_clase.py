@@ -447,4 +447,160 @@ def menor_diferencia(arr):
         min_diff = min(min_diff, diff) # Se actualiza min_diff con la menor diferencia encontrada hasta ahora utilizando la función min().
 
     return min_diff
+"""
+n^2: es un algoritmo poco eficiente ya que es bueno utilizarlo con datos pequeños.
+complejidad espacial: no dice cuanta memoria usa, osea que esta relacionado con que va a ir revisando el codigo.
+complejidad temporal: dice cuanto tiempo va a tardar el algoritmo en ejecutarse, osea que esta relacionado con el numero de operaciones que va a realizar el algoritmo.
 
+
+
+def dubble_sort(arr):
+    n = len(arr)
+     #son los ultimos i elementos que ya estan ordenados
+    for i in range(n):
+        #Intercambia si el elemento encontrado es menor o mayor
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+
+#a implementar:
+#ordenar a estudiantes por nota utilizando el ordenamiendo por burbuga y que me diga cuantos intercambios tuvo que hacer para poder ordenar a los estudiantes por su nota
+
+def bubble_sort(arr):
+    n = len(arr)
+    contador = 0
+    intercambios = 0
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j]["nota"] > arr[j + 1]["nota"]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                contador += 1
+    return arr, contador
+
+estudiantes = [
+    {"nombre": "Juan", "nota": 3.8},
+    {"nombre": "María", "nota": 4.5},
+    {"nombre": "Pedro", "nota": 2.9},
+    {"nombre": "Ana", "nota": 4.2},
+    {"nombre": "Sara", "nota": 3.0}
+]
+estudiantes_ordenados, intercambios = bubble_sort(estudiantes)
+print("Estudiantes ordenados:")
+print(estudiantes_ordenados)
+
+print(f"Cantidad de intercambios realizados: {intercambios}")
+
+def bubble_sort(arr):
+    n = len(arr)
+    conteo = 0
+    intercambios = 0
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            conteo+= 1
+            if arr[j]["nota"] > arr[j + 1]["nota"]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                intercambios += 1
+    return arr, conteo, intercambios
+
+
+
+def dubble_sort(arr):
+    n = len(arr)
+    cont = 0
+    intercambios = 0
+     #son los ultimos i elementos que ya estan ordenados
+    for i in range(n):
+        #Intercambia si el elemento encontrado es menor o mayor
+        for j in range(0, n - i - 1):
+            cont += 0
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                intercambios += 1
+    return arr, cont, intercambios
+
+import time
+import random
+
+for n in [10, 100, 500, 1000, 3000, 10000]:
+    aleatoria = [random.randint(1, 1000) for _ in range(n)]
+    inicio = time.time()
+    _,conteo, intercambios = dubble_sort(aleatoria.copy())
+    tiempo = time.time() - inicio
+    print(f"lista de {n} posiciones. Tiempo: {tiempo}, comparaciones: {conteo}, intercambios: {intercambios}")
+"""
+
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr [i]
+        j = i - 1
+
+        while j >= 0 and key < arr [j]:
+            arr [j + 1] = arr [j]
+            j -= 1
+        arr [j + 1] = key
+    return arr
+
+nombres = ["Luis", "Ana", "Mario", "Andrea", "Carla", "Alberto", "Beatriz", "Sara"]
+
+#organizar los nombres de manera alfabeticamente 
+nombres_ordenadosAlfabeticamente = insertion_sort(nombres)
+print("Nombres ordenados alfabéticamente:")
+print(nombres_ordenadosAlfabeticamente)
+
+"""
+04/03/2026
+burbuja: tiene una complejidad temporal 0(n^2), espacial 0(1),estable
+insercion: tiene una complejidad temporal 0(n^2), espacial 0(1),estable
+seleccion: tiene una complejidad temporal 0(n^2), espacial 0(1),no estable
+estos solo son buenos para datos pequeños osea que no se recomienda utilizarlos para ordenar grandes cantidades de datos debido a su ineficiencia. 
+"""
+
+def merge (arr,left, middle, right):
+
+    n1 = middle - left + 1
+    n2 = right - middle
+
+    L = arr[left:middle + 1]
+    R = arr[middle + 1:right + 1]
+
+    i = j = 0
+    k = left
+
+    while i < n1 and j < n2:
+        if L[i] <= R[j]:
+            arr[k] = L[i]
+            i += 1
+        else:
+            arr[k] = R[j]
+            j += 1
+        k += 1
+    
+    while i < n1:
+        arr[k] = L[i]
+        i += 1
+        k += 1
+    while j < n2:
+        arr[k] = R[j]
+        j += 1
+        k += 1
+
+def merge_sort(arr, left, right): #esto es una complejidad lineal porque se divide el arreglo en dos partes y se ordena cada parte de manera recursiva, lo que tiene una complejidad de O(n log n) debido a la división del arreglo y la combinación de las partes ordenadas.
+    #[T(n)= 2T(n/2) + n -> O(n) =  log n -> n log n]
+    if left < right:
+        middle = (left + right) // 2
+        merge_sort(arr, left, middle)
+        merge_sort(arr, middle + 1, right)
+        merge(arr, left, middle, right)
+
+import random
+import time
+
+for i in [100, 500, 1000, 3000]:
+    lista = [random.randint(1, 1000) for _ in range(i)]
+
+    inicio = time.time()
+    merge_sort(lista, 0, i - 1)
+    tiempo = time.time() - inicio
+    print(f"Lista de {i} posiciones. Tiempo de ejecución: {tiempo}")
