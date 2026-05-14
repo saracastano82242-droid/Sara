@@ -604,3 +604,155 @@ for i in [100, 500, 1000, 3000]:
     merge_sort(lista, 0, i - 1)
     tiempo = time.time() - inicio
     print(f"Lista de {i} posiciones. Tiempo de ejecución: {tiempo}")
+
+    """
+    07/05/2026
+
+    merge sort y heap sort son = n log n.
+    bubble sort, insertion sort y selection sort son = n^2.
+    counting sort = 0(n) este solo ordena numeros enteros.
+    
+    """
+
+    def quicksort(arr, low, high):
+        if low < high:
+            #Encuentra el indicice de la partición
+            pi = partition(arr, low, high)
+            #Ordena los elementos antes y después de la partición
+            quicksort(arr, low, pi - 1) # Ordena los elementos antes de la partición
+            quicksort(arr, pi + 1, high) # Ordena los elementos después de la partición
+
+    def partition(arr, low, high):
+        pivot = arr[high]
+        i = low - 1
+        for j in range(low, high):
+            if arr[j] < pivot:
+                i += 1
+                arr[i], arr[j] = arr[j], arr[i]
+
+        arr[i + 1], arr[high] = arr[high], arr[i + 1]
+        return i + 1
+    
+#ejemplo de uso
+arr = [10, 7, 8, 9, 1, 5]
+n = len(arr)
+quicksort(arr, 0, n - 1)
+print("Sorted array:", arr)
+
+"""
+si tengo este arreglo[100,205,2,1503,10,55] no es recomendable utilizar quick sort por que el pivote elegido (en este caso, 
+el último elemento del arreglo) es 55, lo que puede llevar a una partición desequilibrada. 
+En este caso, el pivote 55 es mayor que la mayoría de los elementos del arreglo,
+
+Radix sort es un algoritmo de ordenamiento no comparativo que ordena números enteros procesando cada dígito individualmente.
+Es eficiente para ordenar grandes cantidades de números enteros, especialmente cuando el rango de los números es limitado. 
+Sin embargo, no es adecuado para ordenar números con una gran cantidad de dígitos o para ordenar datos que no son enteros.
+Y si tengo este arreglo[100,205,2,1503,10,55] el radix sort sería una buena opción para ordenar este arreglo, ya que todos los elementos son números enteros 
+y el rango de los números es relativamente pequeño (de 0 a 1503). 
+ya que el radix sort ordena los números procesando cada dígito individualmente, sería eficiente para ordenar este arreglo en particular.
+
+counting sort es un algoritmo de ordenamiento no comparativo que ordena números enteros contando el número de ocurrencias de cada valor en el arreglo.
+Es eficiente para ordenar grandes cantidades de números enteros, especialmente cuando el rango de los números es
+limitado. Sin embargo, no es adecuado para ordenar números con una gran cantidad de dígitos o para ordenar datos que no son enteros.
+Y si tengo este arreglo[100,205,2,1503,10,55] el counting sort sería una buena opción para ordenar este arreglo, ya que todos los elementos son números enteros
+y el rango de los números es relativamente pequeño (de 0 a 1503).
+
+"""
+
+def counting_sort(arr, exp):
+    n = len(arr)
+    output = [0] * n
+    count = [0] * 10
+
+    for i in range(n):
+        index = (arr[i] // exp) % 10
+        count[index] += 1
+
+    for i in range(1, 10): #Este ciclo acumula los conteos para que el count[i] contenga la posición final de este dígito en el arreglo de salida.
+        count[i] += count[i - 1]
+    
+    i = n - 1
+    while i >= 0:
+        index = (arr[i] // exp) % 10
+        output[count[index] - 1] = arr[i]
+        count[index] -= 1
+        i -= 1
+    
+    for i in range(n):
+        arr[i] = output[i]
+
+def radix_sort(arr):
+    max_element = max(arr)
+
+    exp = 1
+    while max_element // exp > 0:
+        counting_sort(arr, exp)
+        exp *= 10
+
+#ejemplo de uso
+arr = [170, 45, 75, 90, 802, 24, 2, 66]
+radix_sort(arr)
+print(arr)
+
+"""
+Radix sort: no sirve con decimales ni con string, solo sirve con numeros enteros
+caracteristicas: en espacio 0(n)
+tiempo: 0(n + k )(n)
+es estable.
+
+bucket sort: es un algoritmo de ordenamiento que distribuye los elementos de un arreglo en un número finito de "cubetas" o "baldes", y 
+luego ordena cada cubeta individualmente utilizando otro algoritmo de ordenamiento (como insertion sort) o aplicando recursivamente el bucket sort.
+ Es eficiente para ordenar números flotantes en un rango específico, pero no es adecuado para ordenar números enteros o datos que no son flotantes.
+
+"""
+def bucket_sort(arr):
+    if len(arr) == 0:
+        return arr
+
+    min_value = min(arr)
+    max_value = max(arr)
+    bucket_count = len(arr)
+    buckets = [[] for _ in range(bucket_count)]
+
+    for num in arr:
+        index = int((num - min_value) / (max_value - min_value) * (bucket_count - 1))
+        buckets[index].append(num)
+
+    sorted_arr = []
+    for bucket in buckets:
+        sorted_arr.extend(sorted(bucket))
+
+    return sorted_arr
+#ejemplo de uso
+arr = [0.42, 0.32, 0.23, 0.52, 0.25, 0.47, 0.51]
+sorted_arr = bucket_sort(arr)
+print(sorted_arr)
+
+#ejemplo de buket que no se deberia implementar por que no es eficiente para ordenar numeros enteros
+def bucket_sort(arr):
+    if len(arr) == 0:
+        return arr
+
+    min_value = min(arr)
+    max_value = max(arr)
+    bucket_count = len(arr)
+    buckets = [[] for _ in range(bucket_count)]
+
+    for num in arr:
+        index = int((num - min_value) / (max_value - min_value) * (bucket_count - 1))
+        buckets[index].append(num)
+
+    sorted_arr = []
+    for bucket in buckets:
+        sorted_arr.extend(sorted(bucket))
+
+    return sorted_arr
+#ejemplo de uso
+arr = [100, 205, 2, 1503, 10, 55]
+sorted_arr = bucket_sort(arr)
+print(sorted_arr)   
+
+"""
+Para estudiar: ¿Que tengo que cambiarle al algoritmo para que funcione y sea eficiente, dependiendo si nececito bucket sort, radix sort, counting sort, quick sort, merge sort o heap sort?
+
+"""
