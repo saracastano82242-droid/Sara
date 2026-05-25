@@ -130,15 +130,15 @@ Ordena las siguientes complejidades de la MÁS RÁPIDA a la MÁS LENTA:
 O(n!), O(1), O(n log n), O(2^n), O(n²), O(log n), O(n), O(n³), O(√n)
 
 Tu respuesta (de más rápida a más lenta):
-1. ___
-2. ___
-3. ___
-4. ___
-5. ___
-6. ___
-7. ___
-8. ___
-9. ___
+1. O(1) por que siempre tarda lo mismo, no importa el tamaño de la entrada
+2. O(log n) por que cada vez que aumenta la entrada, el tiempo de ejecución solo aumenta un poco
+3. O(√n) por que aunque la entrada aumente mucho, el tiempo de ejecución solo aumenta un poco más que O(log n)
+4. O(n) por que el tiempo de ejecución aumenta proporcionalmente al tamaño de la entrada
+5. O(n log n) por que el tiempo de ejecución aumenta más que O(n) pero menos que O(n²)
+6. O(n²) por que el tiempo de ejecución aumenta cuadráticamente con el tamaño de la entrada
+7. O(n³) por que el tiempo de ejecución aumenta cúbicamente con el tamaño de la entrada
+8. O(2^n) por que el tiempo de ejecución se duplica cada vez que aumenta la entrada
+9. O(n!) por que el tiempo de ejecución aumenta factorialmente con el tamaño de la entrada, lo que es extremadamente lento incluso para entradas pequeñas
 """
 
 
